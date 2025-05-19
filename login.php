@@ -3,7 +3,7 @@ session_start();
 
 // Αν ο χρήστης είναι ήδη συνδεδεμένος
 if (isset($_SESSION['user_email'])) {
-    header("Location: profile.php");
+    header("Location: main.php");
     exit;
 }
 
@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_name'] = $user['name'];
-            header("Location: profile.php");
+            header("Location: main.php");
             exit;
         } else {
             $error = "wrong password.";

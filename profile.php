@@ -126,9 +126,11 @@ $conn->close();
             <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
         </button>
     </form>
-    <form action="" method="POST">
-        <button class="continuebtn">Continue in the website</button>
-    </form>
+
+        <nav>
+          <button onclick="window.location.href='main.php'" class="continuebtn" >Continue in the website</button>
+        </nav>
+
 </div>
 </body>
 </html>
