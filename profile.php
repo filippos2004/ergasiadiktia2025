@@ -19,9 +19,9 @@ $error = '';
 // Ενημέρωση ονόματος
 if (isset($_POST['update'])) {
     $new_name  = $conn->real_escape_string($_POST['new_name']);
-    $new_lname = $conn->real_escape_string($_POST['new_lname']);
+    $new_lname = $conn->real_escape_string($_POST['new_name']);
     $email     = $_SESSION['user_email'];
-    $sql       = "UPDATE users SET name='$new_name', lname='$new_lname' WHERE email='$email'";
+    $sql       = "UPDATE users SET firstname='$new_name', lastname='$new_lname' WHERE email='$email'";
     if ($conn->query($sql) === TRUE) {
         $_SESSION['user_name'] = $new_name;
         $success = 'Το όνομα ενημερώθηκε με επιτυχία.';
@@ -42,7 +42,7 @@ if (isset($_POST['delete'])) {
 
 // Φόρτωση τρεχόντων στοιχείων χρήστη
 $email = $_SESSION['user_email'];
-$res   = $conn->query("SELECT name, lname FROM users WHERE email='$email'");
+$res   = $conn->query("SELECT firstname, lastname FROM users WHERE email='$email'");
 $user  = $res->fetch_assoc();
 $conn->close();
 ?>
@@ -102,11 +102,11 @@ $conn->close();
     <form method="POST" action="">
         <div class="userdata">
             Όνομα:<br>
-            <input type="text" name="new_name" value="<?= htmlspecialchars($user['name']) ?>" required>
+            <input type="text" name="new_name" value="<?= htmlspecialchars($user['firstname']) ?>" required>
         </div>
         <div class="userdata">
             Επώνυμο:<br>
-            <input type="text" name="new_lname" value="<?= htmlspecialchars($user['lname']) ?>" required>
+            <input type="text" name="new_lname" value="<?= htmlspecialchars($user['lastname']) ?>" required>
         </div>
         <button class="otherbtns" type="submit" name="update">
             <i class="fa-regular fa-pen-to-square"></i> Αλλαγή Ονόματος

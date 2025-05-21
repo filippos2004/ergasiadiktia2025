@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
         echo "<p style='color:red;'>this email already exists go fuck yourself.</p>";
     } else {
         // Εισαγωγή στη βάση
-        $sql = "INSERT INTO users (name,lname, email, password,username ) VALUES ('$name','$lname', '$email', '$password', '$username')";
+        $sql = "INSERT INTO users (firstname,lastname, email, password,username ) VALUES ('$name','$lname', '$email', '$password', '$username')";
         if ($conn->query($sql) === TRUE) {
             $_SESSION['user_email']=$email;
             $_SESSION['user_name']=$name;

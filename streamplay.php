@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
         $error="Email already exists please choose another one.";
     } else {
         // Εισαγωγή στη βάση
-        $sql = "INSERT INTO users (name,lname, email, password,username ) VALUES ('$name','$lname', '$email', '$password', '$username')";
+        $sql = "INSERT INTO users (firstname,lastname, email, password,username ) VALUES ('$name','$lname', '$email', '$password', '$username')";
         if ($conn->query($sql) === TRUE) {
             $success ="Signup successfull please go back and login";
         } else {
@@ -260,8 +260,8 @@ if (isset($_POST['submit'])) {
     <i id="id6" class="fonts hide">Password</i><br>
     <input id="id8" class="textype hide" type="password" name="password" placeholder="  Tell us your secret!"><br>
     <button id="id7" class="submit hide" type="submit" name="submit" onclick="save()">Sign-up</button>
-    <div id="signupMessage" class="<?= $error ? 'error' : '' ?>">
-        <?= htmlspecialchars($success ?: $error) ?>
+    <div id="signupMessage" class="">
+
     </div>
 
 </form>

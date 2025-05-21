@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_email'] = $user['email'];
-            $_SESSION['user_name'] = $user['name'];
+            $_SESSION['user_name'] = $user['firstname'];
             header("Location: main.php");
             exit;
         } else {
