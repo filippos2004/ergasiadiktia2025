@@ -229,6 +229,29 @@ if (isset($_POST['submit'])) {
             margin-top:-100px;
             border-radius:50px;
             border-width:10px;
+
+        }
+        .backk{
+            background-color:black;
+            color:white;
+            border-radius:5px;
+            font-size:16px;
+            font-family:'Courier New', monospace;
+            margin-left:-460px;
+            margin-top:-100px;
+            border-radius:50px;
+            border-width:10px;
+        }
+        .extrr{
+            background-color:black;
+            color:white;
+            border-radius:5px;
+            font-size:16px;
+            font-family:'Courier New', monospace;
+            margin-left:1025px;
+            margin-top:-100px;
+            border-radius:50px;
+            border-width:10px;
         }
         .font{
             color:white;
@@ -268,15 +291,19 @@ if (isset($_POST['submit'])) {
 <button id="id9" class="extr hide" onclick="togglePassword()">
     <i class="fa-regular fa-eye-slash"></i>
 </button>
-<button id="id10" class="back hide" onclick="back()"><i class="fa-solid fa-house"></i>
-</button>
-<form method="POST" action="login.php">
-    <div  id="ic1" class="signin hide">
+<button id="id10" class="back hide" onclick="back()"><i class="fa-solid fa-house"></i></button>
+<button id="id30" class="backk hide" onclick="backk()"><i class="fa-solid fa-house"></i>
+    <button id="id31" class="extrr hide" onclick="togglePassword1()">
+        <i class="fa-regular fa-eye-slash"></i>
+    </button>
+
+<form method="POST" action="login.php"  id="ic1" class="signin hide" >
+
         <i id="ic2" class="font hide">Welcome back!</i><br>
         <input id="ic3" class="textype hide" name="email" type="text" placeholder="Enter your e-mail here!"><br>
         <input id="ic4" class="textype hide" name="password" type="password" placeholder="Enter your password here!"><br>
         <button id="ic5" class="submit hide" name="submit">Log-in</button>
-    </div>
+
 </form>
 <audio id="a" src="audio/pop.mp3" preload="auto"></audio>
 <audio id="b" src="audio/success.mp3" preload="auto"></audio>
@@ -315,6 +342,19 @@ if (isset($_POST['submit'])) {
         const back5= document.getElementById("id10");
         back5.classList.add("hide");
     }
+    function backk(){
+        document.getElementById("a").play();
+        const back1= document.getElementById("ic1");
+        back1.classList.add("hide");
+        const back2 = document.getElementById("btn1");
+        back2.classList.remove("hide");
+        const back3 = document.getElementById("btn2");
+        back3.classList.remove("hide");
+        const back4= document.getElementById("id31");
+        back4.classList.add("hide");
+        const back5= document.getElementById("id30");
+        back5.classList.add("hide");
+    }
     function signin() {
         document.getElementById("a").play();
         const btn2 = document.getElementById("btn1");
@@ -331,21 +371,33 @@ if (isset($_POST['submit'])) {
             document.getElementById("btn1").classList.add("hide");
             document.getElementById("btn2").classList.add("hide");
 
-            ["ic1", "ic2", "ic3", "ic4", "ic5","id10"].forEach(id => {
+            ["ic1", "ic2", "ic3", "ic4", "ic5", "id31"].forEach(id => {
                 document.getElementById(id).classList.remove("hide");
             });
+            document.getElementById("id30").classList.remove("hide");
         }, 300);
     }
     function togglePassword() {
         document.getElementById("a").play();
         const pwdInput = document.getElementById("id8");
         const toggleBtn = document.getElementById("id9");
+
         const isPassword = pwdInput.type === "password";
         pwdInput.type = isPassword ? "text" : "password";
         toggleBtn.innerHTML = isPassword
             ? '<i class="fa-regular fa-eye"></i></i>'
             : '<i class="fa-regular fa-eye-slash"></i>';
 
+    }
+    function togglePassword1() {
+        document.getElementById("a").play();
+        const pwdInput1 = document.getElementById("ic4")
+        const toggleBtn1 = document.getElementById("id31");
+        const isPassword1 = pwdInput1.type === "password";
+        pwdInput1.type = isPassword1 ? "text" : "password";
+        toggleBtn1.innerHTML = isPassword1
+            ? '<i class="fa-regular fa-eye"></i></i>'
+            : '<i class="fa-regular fa-eye-slash"></i>';
     }
     function save(){
         document.getElementById("a").play();
