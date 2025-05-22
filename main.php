@@ -107,10 +107,10 @@ $conn->close();
 </head>
 <body style="background-image:url('images/img1.jpg');">
 <div class="nav">
-    <button id="search1" class="search1" onclick="showSection('search')">Search</button>
-    <button id="playlist1"class="playlist" onclick="showSection('playlists')">My Playlists</button>
+    <button id="search1" class="search1" onclick="showSection('search')">Αναζητηση</button>
+    <button id="playlist1"class="playlist" onclick="showSection('playlists')"> Playlists</button>
     <button id="profile1" class="profile" onclick="location.href='profile.php'">Profile</button>
-    <button id="logout" class="logout" onclick="location.href='logout.php'" >Logout</button>
+    <button id="logout" class="logout" onclick="location.href='logout.php'" >Αποσυδεση</button>
 </div>
 
 <!-- Search Section -->
@@ -135,7 +135,7 @@ $conn->close();
                                 <option value="<?=$l['id']?>"><?=htmlspecialchars($l['name'])?></option>
                             <?php endforeach; ?>
                         </select>
-                        <button class="add"type="submit" name="add_item" onclick=playaudio() >Add</button>
+                        <button class="add"type="submit" name="add_item" onclick=playaudio() >Προσθηκη</button>
                     </form>
                 </div>
             </div>
@@ -151,7 +151,7 @@ $conn->close();
         <form method="POST">
             <input class="playlistname1" type="text" name="playlist_name" placeholder="Playlist name" required>
             <label><input type="checkbox" name="is_public"> Public</label>
-            <button class="create" type="submit" name="create_playlist" onclick=playaudio()>Create</button>
+            <button class="create" type="submit" name="create_playlist" onclick=playaudio()>Δημιουργια Playlist</button>
         </form>
     </div>
     <div class="section">
@@ -163,7 +163,7 @@ $conn->close();
                         <!-- Form Διαγραφής -->
                         <form method="POST" style="display:inline;" onsubmit="return confirm('Delete playlist;');">
                             <input type="hidden" name="playlist_id_delete" value="<?=$l['id']?>">
-                            <button class="deleteplaylist" type="submit" name="delete_playlist" onclick=playaudio() style="margin-left:10px;">Delete</button>
+                            <button class="deleteplaylist" type="submit" name="delete_playlist" onclick=playaudio() style="margin-left:10px;">Διαγραφη playlist</button>
                         </form>
                     </li>
                 <?php endforeach; ?>

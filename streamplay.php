@@ -54,22 +54,68 @@ if (isset($_POST['submit'])) {
     <title>Stream Play</title>
     <link rel="icon" href="images/img3.png" type="image/png">
     <style>
-        {
-            flex: 0 0 200px;
-            padding: 10px;
-            border: 1px solid #4caf50;
-            border-radius: 4px;
-            background: #e8f5e9;
-            color: #2e7d32;
-            display: <?= $success ? 'block' : 'none' ?>;
+
+        .helpdiv{
+            cursor: pointer;
+            color white;
+            background-color:black;
+            margin-left:1700px;
+            margin-right: 750px;
+            border-radius:50px;
+            margin-top:-350px;
+            max-width: 100px;
+            min-width: 100px;
 
         }
-        {
-            border-color: #f44336;
-            background: #ffebee;
-            color: #c62828;
+        .help1{
+            cursor: pointer;
+            max-width: 100px;
+            min-width: 100px;
+            display:block;
+            margin-right:auto;
+            margin-left:0px;
+            font-size:20px;
+            font-family:'Courier New', monospace;
+            color:white;
+            text-align:center;
+            background-image: url("images/img4.jpg");
+            border-radius: 40px;
+            transition: transform 0.1s ease;
+
+        }
+        .aboutbtns{
+            cursor: pointer;
+            color white;
+            background-color:black;
+            margin-left:1700px;
+            margin-right: 750px;
+            border-radius:50px;
+            margin-top:25px;
+            margin-bottom:100px;
+            max-width: 100px;
+            min-width: 100px;
+
+        }
+        .about1{
+
+            cursor: pointer;
+            max-width: 100px;
+            min-width: 100px;
+            display:block;
+            margin-right:auto;
+            margin-left:0px;
+            font-size:20px;
+            font-family:'Courier New', monospace;
+            color:white;
+            text-align:center;
+            background-image: url("images/img4.jpg");
+            border-radius: 40px;
+            transition: transform 0.1s ease;
         }
         .phrase{
+            margin: auto;
+            max-width: 1000px;
+            min-width: 1000px;
             display:block;
             margin-right:550px;
             margin-left:550px;
@@ -81,6 +127,9 @@ if (isset($_POST['submit'])) {
             border-radius:40px;
         }
         .phrase2{
+            margin: auto;
+            max-width: 1000px;
+            min-width: 1000px;
             display:block;
             margin-right:550px;
             margin-left:550px;
@@ -90,10 +139,14 @@ if (isset($_POST['submit'])) {
             font-family:'Courier New', monospace;
             color:black;
             text-align:center;
+
         }
         .btn1{
+            margin: auto;
+            max-width: 2000px;
+            position: relative;
             display:block;
-            margin-right:1000px;
+            margin-right:790px;
             margin-left:auto;
             font-size:30px;
             font-family:'Courier New', monospace;
@@ -110,7 +163,8 @@ if (isset($_POST['submit'])) {
         }
         .btn2{
             display:block;
-            margin-right:1000px;
+            max-width: 2000px;
+            margin-right:790px;
             margin-left: auto ;
             margin-top: 40px;
             margin-bottom:40px;
@@ -141,10 +195,10 @@ if (isset($_POST['submit'])) {
             width:500px;
             height:600px;
             border-radius:20px;
-            margin-left:600px;
-            margin-right:600px;
+            margin-left:790px;
+            margin-right:auto;
             margin-bottom:50px;
-            margin-top:-70px;
+            margin-top:-80px;
             transition: transform 0.1s ease;
         }
         .signin{
@@ -155,9 +209,9 @@ if (isset($_POST['submit'])) {
             border-radius:20px;
             border-width:20px;
             margin-left:800px;
-            margin-right:600px;
-            margin-bottom:50px;
-            margin-top:-70px;
+            margin-right:auto;
+            margin-bottom:10px;
+            margin-top:100px;
             transition: transform 0.1s ease
         }
         .fonts{
@@ -193,6 +247,7 @@ if (isset($_POST['submit'])) {
             width:200px;
             height:50px;
         }
+        .help1-pop{ animation: pop 0.3s forwards;}
         .signin-yes{animation: pop 0.3s forwards;}
         .signupform-yes{animation: pop 0.3s forwards;}
         .hide { display: none;}
@@ -211,10 +266,9 @@ if (isset($_POST['submit'])) {
         .extr{
             background-color:black;
             color:white;
-            border-radius:5px;
             font-size:16px;
             font-family:'Courier New', monospace;
-            margin-left:1025px;
+            margin-left:1219px;
             margin-top:-100px;
             border-radius:50px;
             border-width:10px;
@@ -222,11 +276,35 @@ if (isset($_POST['submit'])) {
         .back{
             background-color:black;
             color:white;
-            border-radius:5px;
             font-size:16px;
             font-family:'Courier New', monospace;
             margin-left:-460px;
             margin-top:-100px;
+            border-radius:50px;
+            border-width:10px;
+
+        }
+        .backk{
+            background-color:black;
+            color:white;
+            font-size:16px;
+            font-family:'Courier New', monospace;
+            margin-left:0px;
+            margin-right: 10px;
+            margin-top:10px;
+            margin-bottom:10px;
+            border-radius:50px;
+            border-width:10px;
+        }
+        .extrr{
+            background-color:black;
+            color:white;
+            font-size:16px;
+            font-family:'Courier New', monospace;
+            margin-left:380px;
+            margin-right: 0px;
+            margin-top:100px;
+            margin-bottom:10px;
             border-radius:50px;
             border-width:10px;
         }
@@ -244,40 +322,59 @@ if (isset($_POST['submit'])) {
 <img src="images/img2.png" class="image">
 <div class="phrase">Stream Play</div>
 <div class="phrase2">your #1 streaming website</div>
-
+<div id="divbtn" class="singbtns">
 <button id="btn1" class="btn1" onclick="signin()">Sign-in</button>
-<button id="btn2"class="btn2" onclick="signup()">Sign-up</button>
+<button id="btn2" class="btn2" onclick="signup()">Sign-up</button>
+</div>
+<div id="helpdiv" class="helpdiv">
+    <button id="help" class="help1"  onclick="window.location.href='help.html'">help?
+    </button>
+</div>
+<div id="aboutbtn" class="aboutbtns">
+   <button id="about" class="about1" onclick="window.location.href='about.html'">About us</button>
+</div>
 
-<form method="POST" action="" id="id1" class="signupform hide" >
-    <i id="id2" class="fonts hide">First-Name</i><br>
+
+<form method="POST" action="" >
+    <div id="id1" class="signupform hide">
+    <i id="id2" class="fonts hide">Ονομα</i><br>
     <input id="id3" class="textype hide" type="text" name="name" placeholder="  How shall we call you?"><br>
-    <i id="id11" class="fonts hide">Last-Name</i>
+    <i id="id11" class="fonts hide">Επιθετο</i>
     <input id="id12" class="textype hide" type="text" name="lname" placeholder=" Give us your Last Name"><br>
     <i id="id13"class="fonts hide">Username</i>
     <input id="id14" class="textype hide" type="text" name="username" placeholder=" Give us your Username"><br>
     <i id="id4" class="fonts hide">E-mail</i><br>
     <input id="id5" class="textype hide" type="text" name="email" placeholder="  What's your e-mail?"><br>
-    <i id="id6" class="fonts hide">Password</i><br>
+    <i id="id6" class="fonts hide">Κωδικός</i><br>
     <input id="id8" class="textype hide" type="password" name="password" placeholder="  Tell us your secret!"><br>
-    <button id="id7" class="submit hide" type="submit" name="submit" onclick="save()">Sign-up</button>
-    <div id="signupMessage" class="">
-
+    <button id="id7" class="submit hide" type="submit" name="submit" onclick="save()">Eγγραφή</button>
     </div>
 
 </form>
 <button id="id9" class="extr hide" onclick="togglePassword()">
     <i class="fa-regular fa-eye-slash"></i>
 </button>
-<button id="id10" class="back hide" onclick="back()"><i class="fa-solid fa-house"></i>
-</button>
-<form method="POST" action="login.php">
-    <div  id="ic1" class="signin hide">
-        <i id="ic2" class="font hide">Welcome back!</i><br>
+<button id="id10" class="back hide" onclick="back()"><i class="fa-solid fa-house"></i></button>
+
+
+
+
+      <div id="ic1" class="signin hide">
+
+        <i id="ic2" class="font hide">Καλός Ηρθατε!</i><br>
+          <form method="POST" action="login.php"   >
+
         <input id="ic3" class="textype hide" name="email" type="text" placeholder="Enter your e-mail here!"><br>
         <input id="ic4" class="textype hide" name="password" type="password" placeholder="Enter your password here!"><br>
         <button id="ic5" class="submit hide" name="submit">Log-in</button>
-    </div>
-</form>
+          </form>
+          <button id="id30" class="backk hide" onclick="backk()">
+              <i class="fa-solid fa-house"></i></button>
+          <button id="id31" class="extrr hide" onclick="togglePassword1()">
+              <i class="fa-regular fa-eye-slash"></i>
+          </button>
+      </div>
+
 <audio id="a" src="audio/pop.mp3" preload="auto"></audio>
 <audio id="b" src="audio/success.mp3" preload="auto"></audio>
 <script>
@@ -296,6 +393,9 @@ if (isset($_POST['submit'])) {
         setTimeout(() => {
             document.getElementById("btn1").classList.add("hide");
             document.getElementById("btn2").classList.add("hide");
+            document.getElementById("helpdiv").classList.add("hide");
+            document.getElementById("aboutbtn").classList.add("hide");
+
 
             ["id1", "id2", "id3", "id4", "id5", "id6", "id7", "id8", "id9", "id10","id11","id12","id13","id14"].forEach(id => {
                 document.getElementById(id).classList.remove("hide");
@@ -314,6 +414,31 @@ if (isset($_POST['submit'])) {
         back4.classList.add("hide");
         const back5= document.getElementById("id10");
         back5.classList.add("hide");
+        const back6= document.getElementById("helpdiv");
+        back6.classList.remove("hide");
+        const back7= document.getElementById("aboutbtn");
+        back7.classList.remove("hide");
+
+
+    }
+    function backk(){
+        document.getElementById("a").play();
+        const back1= document.getElementById("ic1");
+        back1.classList.add("hide");
+        const back2 = document.getElementById("btn1");
+        back2.classList.remove("hide");
+        const back3 = document.getElementById("btn2");
+        back3.classList.remove("hide");
+        const back4= document.getElementById("id31");
+        back4.classList.add("hide");
+        const back5= document.getElementById("id30");
+        back5.classList.add("hide");
+        const back6= document.getElementById("helpdiv");
+        back6.classList.remove("hide");
+        const back7= document.getElementById("aboutbtn");
+        back7.classList.remove("hide");
+
+
     }
     function signin() {
         document.getElementById("a").play();
@@ -330,22 +455,37 @@ if (isset($_POST['submit'])) {
         setTimeout(() => {
             document.getElementById("btn1").classList.add("hide");
             document.getElementById("btn2").classList.add("hide");
+            document.getElementById("helpdiv").classList.add("hide");
+            document.getElementById("aboutbtn").classList.add("hide");
 
-            ["ic1", "ic2", "ic3", "ic4", "ic5","id10"].forEach(id => {
+
+            ["ic1", "ic2", "ic3", "ic4", "ic5", "id31"].forEach(id => {
                 document.getElementById(id).classList.remove("hide");
             });
+            document.getElementById("id30").classList.remove("hide");
         }, 300);
     }
     function togglePassword() {
         document.getElementById("a").play();
         const pwdInput = document.getElementById("id8");
         const toggleBtn = document.getElementById("id9");
+
         const isPassword = pwdInput.type === "password";
         pwdInput.type = isPassword ? "text" : "password";
         toggleBtn.innerHTML = isPassword
             ? '<i class="fa-regular fa-eye"></i></i>'
             : '<i class="fa-regular fa-eye-slash"></i>';
 
+    }
+    function togglePassword1() {
+        document.getElementById("a").play();
+        const pwdInput1 = document.getElementById("ic4")
+        const toggleBtn1 = document.getElementById("id31");
+        const isPassword1 = pwdInput1.type === "password";
+        pwdInput1.type = isPassword1 ? "text" : "password";
+        toggleBtn1.innerHTML = isPassword1
+            ? '<i class="fa-regular fa-eye"></i></i>'
+            : '<i class="fa-regular fa-eye-slash"></i>';
     }
     function save(){
         document.getElementById("a").play();

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="el" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>Σχετικά με το StreamPlay</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --fg: #000000;
+            --accent: #4caf50;
+        }
+        [data-theme="dark"] {
+            --bg: #121212;
+            --fg: #e0e0e0;
+            --accent: #81c784;
+        }
+        body {
+            margin: 0; padding: 20px;
+            font-family: sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            transition: background .3s, color .3s;
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 10px; right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--fg);
+        }
+        h1 { text-align: center; margin-bottom: 1rem; }
+        .accordion {
+            border-top: 1px solid var(--accent);
+        }
+        .accordion-item {
+            border-bottom: 1px solid var(--accent);
+        }
+        .accordion-header {
+            padding: 1rem;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1rem;
+            transition: max-height .3s ease, padding .3s ease;
+        }
+        .accordion-content.open {
+            padding: 1rem;
+            max-height: 200px; /* or auto with JS */
+        }
+        .accordion-header .arrow {
+            transition: transform .3s;
+        }
+        .accordion-header.open .arrow {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle">🌙</button>
+<h1>Σχετικά με το StreamPlay</h1>
+
+<div class="accordion">
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span>Σκοπός του Ιστότοπου</span>
+            <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+            <p>Το StreamPlay επιτρέπει στους χρήστες να δημιουργούν, να οργανώνουν και να αναπαράγουν λίστες βίντεο από το YouTube με εύκολο και διαδραστικό τρόπο.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span>Πώς μπορείτε να εγγραφείτε</span>
+            <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+            <p>Κάντε κλικ στο κουμπί "Εγγραφή", συμπληρώστε τα στοιχεία σας (όνομα, e-mail, username, κωδικό) και πατήστε "Υποβολή". Θα λάβετε επιβεβαίωση και θα μπορείτε αμέσως να συνδεθείτε.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <span>Γιατί να εγγραφείτε;</span>
+            <span class="arrow">▶</span>
+        </div>
+        <div class="accordion-content">
+            <ul>
+                <li>Να αποθηκεύετε τις αγαπημένες σας λίστες βίντεο.</li>
+                <li>Να ακολουθείτε φίλους και να βλέπετε τις δημόσιες λίστες τους.</li>
+                <li>Δυνατότητες δημιουργίας και διαμοιρασμού playlists.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Theme toggle + cookie
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    function setCookie(name, value, days) {
+        let d = new Date();
+        d.setTime(d.getTime() + days*24*60*60*1000);
+        document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+    }
+    function getCookie(name) {
+        let match = document.cookie.match(new RegExp('(^| )'+name+'=([^;]+)'));
+        return match ? match[2] : null;
+    }
+
+    // Apply saved theme or default
+    let theme = getCookie('theme') || 'light';
+    root.setAttribute('data-theme', theme);
+    toggle.textContent = theme==='dark' ? '☀️' : '🌙';
+
+    toggle.addEventListener('click', ()=>{
+        theme = (theme==='dark'? 'light':'dark');
+        root.setAttribute('data-theme', theme);
+        setCookie('theme', theme, 365);
+        toggle.textContent = theme==='dark'? '☀️':'🌙';
+    });
+
+    // Accordion behavior
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const open = header.classList.toggle('open');
+            const content = header.nextElementSibling;
+            if (open) {
+                content.classList.add('open');
+            } else {
+                content.classList.remove('open');
+            }
+        });
+    });
+</script>
+</body>
+</html>
