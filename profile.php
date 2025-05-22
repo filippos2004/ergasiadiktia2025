@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_email'])) {
 // Σύνδεση στη βάση
 $conn = new mysqli("mysql", "user", "userpass", "my_database");
 if ($conn->connect_error) {
-    die("Σφάλμα σύνδεσης: " . $conn->connect_error);
+    die("Couldnt connect: " . $conn->connect_error);
 }
 
 $success = '';
@@ -24,9 +24,9 @@ if (isset($_POST['update'])) {
     $sql       = "UPDATE users SET firstname='$new_name', lastname='$new_lname' WHERE email='$email'";
     if ($conn->query($sql) === TRUE) {
         $_SESSION['user_name'] = $new_name;
-        $success = 'Το όνομα ενημερώθηκε με επιτυχία.';
+        $success = 'Your name has been updated successfully! .';
     } else {
-        $error = 'Σφάλμα κατά την ενημέρωση: ' . $conn->error;
+        $error = 'error your name could be changed ' . $conn->error;
     }
 }
 
@@ -101,15 +101,15 @@ $conn->close();
 
     <form method="POST" action="">
         <div class="userdata">
-            Όνομα:<br>
+            Name:<br>
             <input type="text" name="new_name" value="<?= htmlspecialchars($user['firstname']) ?>" required>
         </div>
         <div class="userdata">
-            Επώνυμο:<br>
+          Last name :<br>
             <input type="text" name="new_lname" value="<?= htmlspecialchars($user['lastname']) ?>" required>
         </div>
         <button class="otherbtns" type="submit" name="update">
-            <i class="fa-regular fa-pen-to-square"></i> Αλλαγή Ονόματος
+            <i class="fa-regular fa-pen-to-square"></i> Change name
         </button>
     </form>
 
@@ -117,7 +117,7 @@ $conn->close();
 
     <form method="POST" action="" onsubmit="return confirm('Το προφίλ θα διαγραφεί. Είστε σίγουροι;');">
         <button class="otherbtns" type="submit" name="delete">
-            <i class="fa-regular fa-trash-can"></i> Διαγραφή Προφίλ
+            <i class="fa-regular fa-trash-can"></i> Delete profile
         </button>
     </form>
 
@@ -130,7 +130,12 @@ $conn->close();
         <nav>
           <button onclick="window.location.href='main.php'" class="continuebtn" >Continue in the website</button>
         </nav>
-
+    <audio id="a" src="audio/pop.mp3" preload="auto"></audio>
 </div>
 </body>
 </html>
+<script>
+function playAudio() {
+    documenet.getElementById("a").play();
+}
+</script>
