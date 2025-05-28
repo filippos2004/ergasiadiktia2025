@@ -63,17 +63,15 @@ if (isset($_POST['submit'])) {
             margin-right: 750px;
             border-radius:50px;
             margin-top:-350px;
-            max-width: 100px;
-            min-width: 100px;
 
         }
         .help1{
             cursor: pointer;
-            max-width: 100px;
-            min-width: 100px;
+            width:50px;
+            height:50px;
             display:block;
             margin-right:auto;
-            margin-left:0px;
+            margin-left:-50px;
             font-size:20px;
             font-family:'Courier New', monospace;
             color:white;
@@ -81,6 +79,8 @@ if (isset($_POST['submit'])) {
             background-image: url("images/img4.jpg");
             border-radius: 40px;
             transition: transform 0.1s ease;
+            box-shadow: 0 0 10px 5px white;
+            transition: box-shadow 0.2s ease;
 
         }
         .aboutbtns{
@@ -92,18 +92,20 @@ if (isset($_POST['submit'])) {
             border-radius:50px;
             margin-top:25px;
             margin-bottom:100px;
-            max-width: 100px;
-            min-width: 100px;
 
         }
         .about1{
 
             cursor: pointer;
-            max-width: 100px;
-            min-width: 100px;
+
+            width:50px;
+            height:50px;
+            border-radius:50px;
             display:block;
             margin-right:auto;
-            margin-left:0px;
+            margin-left:-50px;
+            margin-top:40px;
+            margin-bottom:auto;
             font-size:20px;
             font-family:'Courier New', monospace;
             color:white;
@@ -111,6 +113,8 @@ if (isset($_POST['submit'])) {
             background-image: url("images/img4.jpg");
             border-radius: 40px;
             transition: transform 0.1s ease;
+            box-shadow: 0 0 10px 5px white;
+            transition: box-shadow 0.2s ease;
         }
         .phrase{
             margin: auto;
@@ -121,10 +125,11 @@ if (isset($_POST['submit'])) {
             margin-left:550px;
             font-size:50px;
             font-family:'Courier New', monospace;
-            background-image: url("images/img4.jpg");
+            background-image: url("images/wow.gif");
             color:white;
             text-align:center;
             border-radius:40px;
+            box-shadow: 0 0 10px 10px white;
         }
         .phrase2{
             margin: auto;
@@ -137,7 +142,7 @@ if (isset($_POST['submit'])) {
             margin-bottom:100px;
             font-size:25px;
             font-family:'Courier New', monospace;
-            color:black;
+            color:white;
             text-align:center;
 
         }
@@ -156,11 +161,16 @@ if (isset($_POST['submit'])) {
             border-radius:40px;
             padding-left:30px;
             padding-right:30px;
-            border-width:6px;
+            border-width:2px;
             cursor: pointer;
             transition: transform 0.1s ease;
-
+            box-shadow: 0 0 10px 5px white;
+            transition: box-shadow 0.2s ease;
         }
+        .btn1:active {box-shadow: 0 0 15px red;}
+        .btn2:active {box-shadow: 0 0 15px red;}
+        .about1:active {box-shadow: 0 0 15px red;}
+        .help1:active {box-shadow: 0 0 15px red;}
         .btn2{
             display:block;
             max-width: 2000px;
@@ -176,21 +186,25 @@ if (isset($_POST['submit'])) {
             border-radius:40px;
             padding-left:30px;
             padding-right:30px;
-            border-width:6px;
+            border-width:2px;
             cursor: pointer;
             transition: transform 0.1s ease;
+            box-shadow: 0 0 10px 5px white;
+            transition: box-shadow 0.2s ease;
         }
         .image{
             display:block;
             margin-top:50px;
             margin-bottom:-400px;
+
+
         }
         .exbar{
             background-color:white;
             width:50px;
         }
         .signupform {
-            background-image: url("images/img4.jpg");
+            background-image: url("images/wow.gif");
             display:block;
             width:500px;
             height:600px;
@@ -200,9 +214,10 @@ if (isset($_POST['submit'])) {
             margin-bottom:50px;
             margin-top:-80px;
             transition: transform 0.1s ease;
+            box-shadow: 0 0 10px 5px white;
         }
         .signin{
-            background-image: url("images/img4.jpg");
+            background-image: url("images/wow.gif");
             display:block;
             width:500px;
             height:250px;
@@ -212,7 +227,9 @@ if (isset($_POST['submit'])) {
             margin-right:auto;
             margin-bottom:10px;
             margin-top:100px;
-            transition: transform 0.1s ease
+            transition: transform 0.1s ease;
+            box-shadow: 0 0 10px 5px white;
+
         }
         .fonts{
             color:white;
@@ -316,9 +333,22 @@ if (isset($_POST['submit'])) {
             margin-right:10px;
             text-align: center;
         }
+        .soundbtn {
+            margin-right: auto;
+            margin-left: -50px;
+            background-image: url("images/img4.jpg");
+            width: 50px;
+            height: 50px;
+            color: white;
+            border-radius: 50px;
+            box-shadow: 0 0 10px 5px white;
+            cursor: pointer;
+            transition: box-shadow 0.2s ease;
+        }
+        .soundbtn:active {box-shadow: 0 0 15px red;}
     </style>
 </head>
-<body style="background-image:url('images/img1.jpg');">
+<body style="background-image:url('images/bckgrd.gif');background-repeat: no-repeat;background-size: cover;">
 <img src="images/img2.png" class="image">
 <div class="phrase">Stream Play</div>
 <div class="phrase2">your #1 streaming website</div>
@@ -327,25 +357,28 @@ if (isset($_POST['submit'])) {
 <button id="btn2" class="btn2" onclick="signup()">Sign-up</button>
 </div>
 <div id="helpdiv" class="helpdiv">
-    <button id="help" class="help1"  onclick="window.location.href='help.html'">help?
+    <button id="help" class="help1"  onclick="window.location.href='help.html'"><i class="fa-solid fa-question"></i>
     </button>
 </div>
 <div id="aboutbtn" class="aboutbtns">
-   <button id="about" class="about1" onclick="window.location.href='about.html'">About us</button>
+   <button id="about" class="about1" onclick="window.location.href='about.html'"><i class="fa-solid fa-circle-info"></i></button>
+    <br>
+    <br>
+    <button class="soundbtn" onclick="playSound()"><i class="fa-solid fa-music"></i></button>
 </div>
 
 
 <form method="POST" action="" >
     <div id="id1" class="signupform hide">
-    <i id="id2" class="fonts hide">Ονομα</i><br>
+    <i id="id2" class="fonts hide">Name</i><br>
     <input id="id3" class="textype hide" type="text" name="name" placeholder="  How shall we call you?"><br>
-    <i id="id11" class="fonts hide">Επιθετο</i>
+    <i id="id11" class="fonts hide">Last name</i>
     <input id="id12" class="textype hide" type="text" name="lname" placeholder=" Give us your Last Name"><br>
     <i id="id13"class="fonts hide">Username</i>
     <input id="id14" class="textype hide" type="text" name="username" placeholder=" Give us your Username"><br>
     <i id="id4" class="fonts hide">E-mail</i><br>
     <input id="id5" class="textype hide" type="text" name="email" placeholder="  What's your e-mail?"><br>
-    <i id="id6" class="fonts hide">Κωδικός</i><br>
+    <i id="id6" class="fonts hide">Password</i><br>
     <input id="id8" class="textype hide" type="password" name="password" placeholder="  Tell us your secret!"><br>
     <button id="id7" class="submit hide" type="submit" name="submit" onclick="save()">Eγγραφή</button>
     </div>
@@ -361,7 +394,7 @@ if (isset($_POST['submit'])) {
 
       <div id="ic1" class="signin hide">
 
-        <i id="ic2" class="font hide">Καλός Ηρθατε!</i><br>
+        <i id="ic2" class="font hide">Welcome back!</i><br>
           <form method="POST" action="login.php"   >
 
         <input id="ic3" class="textype hide" name="email" type="text" placeholder="Enter your e-mail here!"><br>
@@ -374,10 +407,28 @@ if (isset($_POST['submit'])) {
               <i class="fa-regular fa-eye-slash"></i>
           </button>
       </div>
-
+<audio id="bgAudio" autoplay muted>
+    <source src="audio/chill.mp3" type="audio/mpeg">
+</audio>
 <audio id="a" src="audio/pop.mp3" preload="auto"></audio>
 <audio id="b" src="audio/success.mp3" preload="auto"></audio>
+<audio id="welcomeSound" src="audio/chill.mp3"></audio>
 <script>
+    function playSound() {
+        const audio = document.getElementById("welcomeSound");
+        const button = document.getElementById("soundButton");
+
+        audio.volume = 0.5;
+
+        if (audio.paused) {
+            audio.play();
+            button.textContent = "Stop Sound";
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+            button.textContent = "Play Sound";
+        }
+    }
     function signup() {
         document.getElementById("a").play();
         const btn2 = document.getElementById("btn2");

@@ -19,7 +19,7 @@ $error = '';
 // Ενημέρωση ονόματος
 if (isset($_POST['update'])) {
     $new_name  = $conn->real_escape_string($_POST['new_name']);
-    $new_lname = $conn->real_escape_string($_POST['new_name']);
+    $new_lname = $conn->real_escape_string($_POST['new_lname']);
     $email     = $_SESSION['user_email'];
     $sql       = "UPDATE users SET firstname='$new_name', lastname='$new_lname' WHERE email='$email'";
     if ($conn->query($sql) === TRUE) {
@@ -55,14 +55,16 @@ $conn->close();
     <link rel="icon" href="images/img3.png" type="image/png">
     <style>
         /* Υπάρχον CSS από streamplay.php */
-        body { background-image:url('images/img1.jpg'); background-size:cover; margin:0; padding:0; }
-        .phrase { display:block; margin:50px auto; font-size:50px; font-family:'Courier New', monospace; background-image:url(images/img4.jpg); color:white; text-align:center; border-radius:40px; width:80%; max-width:600px; }
-        .mainwindow { background-image:url(images/img4.jpg);
+        body { background-image:url('images/bckgrd.gif'); background-size:cover; margin:0; padding:0; }
+        .phrase { box-shadow: 0 0 10px 5px white; display:block; margin:50px auto; font-size:50px; font-family:'Courier New', monospace; background-image:url(images/wow.gif); color:white; text-align:center; border-radius:40px; width:80%; max-width:600px; }
+        .mainwindow { background-image:url(images/wow.gif);
             width:600px;
             height:500px;
             margin:20px auto;
             padding:20px;
-            border-radius:20px; }
+            border-radius:20px;
+            box-shadow: 0 0 10px 5px white}
+
         .userdata { color:black; font-size:18px; margin:10px 0; background-image:url(images/img1.jpg); padding:10px; border-radius:20px; }
         .userdata input { width:90%; padding:5px; border:none; border-radius:4px; }
         .otherbtns {
@@ -91,7 +93,7 @@ $conn->close();
     </style>
 </head>
 <body>
-<div class="phrase">Your Account</div>
+<div class="phrase">Ο λογαριασμός σας </div>
 <div class="mainwindow">
     <?php if ($success): ?>
         <div class="feedback success"><?= htmlspecialchars($success) ?></div>

@@ -86,9 +86,9 @@ $conn->close();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         body{margin:0;padding:20px;font-family:sans-serif;background:#eee}
-        .nav{display:flex;justify-content:flex-end;gap:10px}
-        .nav button{padding:8px 16px;cursor:pointer; background-image:url(images/img4.jpg);border-radius:20px;color:white}
-        .section{background:black;padding:15px;margin-bottom:20px;border-radius:8px;color:white;background-image:url(images/img4.jpg);}
+        .nav{display:flex;justify-content:flex-end;gap:10px;margin-right:700px;margin-left:auto;}
+        .nav button{padding:8px 16px;cursor:pointer; background-image:url(images/img4.jpg);border-radius:20px;color:white;box-shadow: 0 0 10px 5px white;}
+        .section{background:black;padding:15px;margin-bottom:20px;border-radius:8px;color:white;background-image:url(images/wow.gif);box-shadow: 0 0 10px 5px white;}
         .hide{display:none}
         .video{display:flex;align-items:flex-start;margin-bottom:15px}
         .video iframe{width:200px;height:113px;margin-right:10px}
@@ -102,23 +102,24 @@ $conn->close();
         .playlistname{padding:8px 16px;cursor:pointer; background-image:url('images/img1.jpg');border-radius:20px;color:black;}
         .create{padding:8px 16px;cursor:pointer; background-image:url(images/img4.jpg);border-radius:20px;color:white}
         .playlistname1{width:20%; padding:8px; border-radius:20px;}
-        .deleteplaylist{padding:8px 16px;cursor:pointer; background-image:url(images/img4.jpg);border-radius:20px;color:white}
+        .deleteplaylist{padding:8px 16px;cursor:pointer; background-image:url(images/img4.jpg);border-radius:20px;color:white;width:55px;height:40px;}
     </style>
 </head>
-<body style="background-image:url('images/img1.jpg');">
+<body style="background-image:url('images/bckgrd.gif');">
 <div class="nav">
-    <button id="search1" class="search1" onclick="showSection('search')">Αναζητηση</button>
-    <button id="playlist1"class="playlist" onclick="showSection('playlists')"> Playlists</button>
-    <button id="profile1" class="profile" onclick="location.href='profile.php'">Profile</button>
-    <button id="logout" class="logout" onclick="location.href='logout.php'" >Αποσυδεση</button>
+    <button id="search1" class="search1" onclick="showSection('search')">Αναζήτηση  <i class="fa-solid fa-magnifying-glass"></i></button>
+    <button id="playlist1"class="playlist" onclick="showSection('playlists')"> Playlists  <i class="fa-solid fa-list-check"></i></button>
+    <button id="profile1" class="profile" onclick="location.href='profile.php'">Profile  <i class="fa-solid fa-user"></i></button>
+    <button id="logout" class="logout" onclick="location.href='logout.php'" >Αποσύνδεση  <i class="fa-solid fa-right-from-bracket"></i></button>
 </div>
-
+<br>
+<br>
 <!-- Search Section -->
 <div id="search" class="section hide">
-    <h2>Search YouTube</h2>
+    <i>Αναζήτηση βίντεο</i>     <img src="images/yt.png" style="width:30px;height:30px; margin-top:auto; margin-bottom:-10px;">
     <form method="GET">
         <input type="text" name="q" placeholder="Search..." class="search-form" value="<?=htmlspecialchars($q)?>">
-        <button class="search2" type="submit" onclick=playaudio() >Search</button>
+        <button class="search2" type="submit" onclick=playaudio() >Αναζήτηση <i class="fa-solid fa-magnifying-glass"></i></button>
         <input type="hidden" name="show" value="search">
     </form>
     <?php if($search_results): ?>
@@ -145,17 +146,17 @@ $conn->close();
 
 <!-- Playlists Section -->
 <div id="playlists" class="section hide">
-    <h2>My Playlists</h2>
+    <h2>#Οι Playlist μου</h2>
     <div class="section">
-        <h3>Create New</h3>
+        <h3>#Δημιουργία Playlist</h3>
         <form method="POST">
             <input class="playlistname1" type="text" name="playlist_name" placeholder="Playlist name" required>
             <label><input type="checkbox" name="is_public"> Public</label>
-            <button class="create" type="submit" name="create_playlist" onclick=playaudio()>Δημιουργια Playlist</button>
+            <button class="create" type="submit" name="create_playlist" onclick=playaudio()><i class="fa-solid fa-plus"></i></button>  Δημιουργια Playlist
         </form>
     </div>
     <div class="section">
-        <h3>Existing Playlists</h3>
+        <h3>#Οι λίστες μου <i class="fa-regular fa-face-smile"></i></h3>
         <?php if($lists): ?>
             <ul>
                 <?php foreach($lists as $l): ?>
@@ -163,7 +164,7 @@ $conn->close();
                         <!-- Form Διαγραφής -->
                         <form method="POST" style="display:inline;" onsubmit="return confirm('Delete playlist;');">
                             <input type="hidden" name="playlist_id_delete" value="<?=$l['id']?>">
-                            <button class="deleteplaylist" type="submit" name="delete_playlist" onclick=playaudio() style="margin-left:10px;">Διαγραφη playlist</button>
+                            <button class="deleteplaylist" type="submit" name="delete_playlist" onclick=playaudio() style="margin-left:10px;"><i class="fa-solid fa-eraser"></i></button>    <i>Διαγραφή</i>
                         </form>
                     </li>
                 <?php endforeach; ?>
