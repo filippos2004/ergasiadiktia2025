@@ -1,6 +1,12 @@
-
-
 <?php
+$feedback = "";
+$error="";
+$success="";
+$username="";
+$password="";
+$email="";
+$name="";
+$lname="";
 
 if (isset($_POST['submit'])) {
     // Σύνδεση με βάση δεδομένων (χρησιμοποιούμε το όνομα του container ως host)
@@ -22,15 +28,21 @@ if (isset($_POST['submit'])) {
 
     // Έλεγχος αν υπάρχει ήδη email
     $check = $conn->query("SELECT * FROM users WHERE email='$email'");
-    if ($check->num_rows > 0) {
-        $error="Email already exists please choose another one.";
+    if (empty($name) || empty($lname) || empty($email) || empty($username) || empty($password)){
+        $feedback="Please fill all the fields";
+
+    }else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $feedback="Invalid email address";
+
+    } else if ($check->num_rows > 0) {
+        $feedback="Email already exists please choose another one.";
     } else {
         // Εισαγωγή στη βάση
         $sql = "INSERT INTO users (firstname,lastname, email, password,username ) VALUES ('$name','$lname', '$email', '$password', '$username')";
         if ($conn->query($sql) === TRUE) {
-            $success ="Signup successfull please go back and login";
+            $feedback ="Signup successfull please go back and login";
         } else {
-            echo "Σφάλμα: " . $conn->error;
+            $feedback =  "Σφάλμα: " . $conn->error;
         }
     }
 
@@ -353,15 +365,15 @@ if (isset($_POST['submit'])) {
 <div class="phrase">Stream Play</div>
 <div class="phrase2">your #1 streaming website</div>
 <div id="divbtn" class="singbtns">
-<button id="btn1" class="btn1" onclick="signin()">Sign-in</button>
-<button id="btn2" class="btn2" onclick="signup()">Sign-up</button>
+    <button id="btn1" class="btn1" onclick="signin()">Sign-in</button>
+    <button id="btn2" class="btn2" onclick="signup()">Sign-up</button>
 </div>
 <div id="helpdiv" class="helpdiv">
     <button id="help" class="help1"  onclick="window.location.href='help.html'"><i class="fa-solid fa-question"></i>
     </button>
 </div>
 <div id="aboutbtn" class="aboutbtns">
-   <button id="about" class="about1" onclick="window.location.href='about.html'"><i class="fa-solid fa-circle-info"></i></button>
+    <button id="about" class="about1" onclick="window.location.href='about.html'"><i class="fa-solid fa-circle-info"></i></button>
     <br>
     <br>
     <button class="soundbtn" onclick="playSound()"><i class="fa-solid fa-music"></i></button>
@@ -370,17 +382,17 @@ if (isset($_POST['submit'])) {
 
 <form method="POST" action="" >
     <div id="id1" class="signupform hide">
-    <i id="id2" class="fonts hide">Name</i><br>
-    <input id="id3" class="textype hide" type="text" name="name" placeholder="  How shall we call you?"><br>
-    <i id="id11" class="fonts hide">Last name</i>
-    <input id="id12" class="textype hide" type="text" name="lname" placeholder=" Give us your Last Name"><br>
-    <i id="id13"class="fonts hide">Username</i>
-    <input id="id14" class="textype hide" type="text" name="username" placeholder=" Give us your Username"><br>
-    <i id="id4" class="fonts hide">E-mail</i><br>
-    <input id="id5" class="textype hide" type="text" name="email" placeholder="  What's your e-mail?"><br>
-    <i id="id6" class="fonts hide">Password</i><br>
-    <input id="id8" class="textype hide" type="password" name="password" placeholder="  Tell us your secret!"><br>
-    <button id="id7" class="submit hide" type="submit" name="submit" onclick="save()">Eγγραφή</button>
+        <i id="id2" class="fonts hide">Name</i><br>
+        <input id="id3" class="textype hide" type="text" name="name" placeholder="  How shall we call you?"><br>
+        <i id="id11" class="fonts hide">Last name</i>
+        <input id="id12" class="textype hide" type="text" name="lname" placeholder=" Give us your Last Name"><br>
+        <i id="id13"class="fonts hide">Username</i>
+        <input id="id14" class="textype hide" type="text" name="username" placeholder=" Give us your Username"><br>
+        <i id="id4" class="fonts hide">E-mail</i><br>
+        <input id="id5" class="textype hide" type="text" name="email" placeholder="  What's your e-mail?"><br>
+        <i id="id6" class="fonts hide">Password</i><br>
+        <input id="id8" class="textype hide" type="password" name="password" placeholder="  Tell us your secret!"><br>
+        <button id="id7" class="submit hide" type="submit" name="submit" onclick="save()">Eγγραφή</button>
     </div>
 
 </form>
@@ -392,21 +404,21 @@ if (isset($_POST['submit'])) {
 
 
 
-      <div id="ic1" class="signin hide">
+<div id="ic1" class="signin hide">
 
-        <i id="ic2" class="font hide">Welcome back!</i><br>
-          <form method="POST" action="login.php"   >
+    <i id="ic2" class="font hide">Welcome back!</i><br>
+    <form method="POST" action="login.php" id="icform"   >
 
         <input id="ic3" class="textype hide" name="email" type="text" placeholder="Enter your e-mail here!"><br>
         <input id="ic4" class="textype hide" name="password" type="password" placeholder="Enter your password here!"><br>
         <button id="ic5" class="submit hide" name="submit">Log-in</button>
-          </form>
-          <button id="id30" class="backk hide" onclick="backk()">
-              <i class="fa-solid fa-house"></i></button>
-          <button id="id31" class="extrr hide" onclick="togglePassword1()">
-              <i class="fa-regular fa-eye-slash"></i>
-          </button>
-      </div>
+    </form>
+    <button id="id30" class="backk hide" onclick="backk()">
+        <i class="fa-solid fa-house"></i></button>
+    <button id="id31" class="extrr hide" onclick="togglePassword1()">
+        <i class="fa-regular fa-eye-slash"></i>
+    </button>
+</div>
 <audio id="bgAudio" autoplay muted>
     <source src="audio/chill.mp3" type="audio/mpeg">
 </audio>
@@ -542,9 +554,14 @@ if (isset($_POST['submit'])) {
         document.getElementById("a").play();
 
     }
+    function feedbackmessage(feedback_msg) {
+        if(feedback_msg){
+            alert(feedback_msg);
+        }
+    }
+    feedbackmessage("<?php echo $feedback; ?>");
+
+
 </script>
 </body>
 </html>
-
-
-
